@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hobby Predictor</title>
+  </head>
+  <body>
+    <h1>Predict Your Hobby</h1>
+    <form action="/predict" method="POST">
+      <label for="school">School:</label>
+      <input type="number" name="school" required /><br />
+
+      <label for="olympiad_participation">Olympiad Participation:</label>
+      <input type="number" name="olympiad_participation" required /><br />
+
+      <label for="fav_sub">Favorite Subject:</label>
+      <input type="number" name="fav_sub" required /><br />
+
+      <label for="projects">Projects:</label>
+      <input type="number" name="projects" required /><br />
+
+      <label for="grasp_pow">Grasping Power:</label>
+      <input type="number" name="grasp_pow" required /><br />
+
+      <label for="time_sprt">Time Spent on Sports:</label>
+      <input type="number" name="time_sprt" required /><br />
+
+      <label for="medals">Number of Medals:</label>
+      <input type="number" name="medals" required /><br />
+
+      <label for="career_sprt">Career in Sports:</label>
+      <input type number="number" name="career_sprt" required /><br />
+
+      <label for="act_sprt">Active in Sports:</label>
+      <input type="number" name="act_sprt" required /><br />
+
+      <label for="fant_arts">Interest in Fantasy Arts:</label>
+      <input type="number" name="fant_arts" required /><br />
+
+      <label for="won_arts">Number of Art Competitions Won:</label>
+      <input type="number" name="won_arts" required /><br />
+
+      <label for="time_art">Time Spent on Arts:</label>
+      <input type="number" name="time_art" required /><br />
+
+      <input type="submit" value="Predict" />
+    </form>
+    {% if prediction %}
+    <h2>{{ prediction }}</h2>
+    {% endif %}
+  </body>
+</html>
