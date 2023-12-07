@@ -1,5 +1,42 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" />
+  <style>
+    /* Add these styles for hover effect */
+    input:hover,
+    button:hover {
+      background-color: #555; /* Change the color as per your preference */
+      color: #fff; /* Change the color as per your preference */
+      cursor: pointer;
+    }
+
+    /* Additional styling for text input on hover */
+    input[type="text"]:hover,
+    input[type="number"]:hover {
+      border-color: #555; /* Change the color as per your preference */
+    }
+
+    /* Styles for clicked (active) state of buttons */
+    button:active {
+      filter: brightness(0.8); /* Darken the color when clicked */
+    }
+
+    /* Additional styles for clicked (active) state of red buttons */
+    button.red:active {
+      filter: brightness(0.8); /* Darken the color when clicked */
+    }
+
+    /* Additional styles for clicked (active) state of green buttons */
+    button.green:active {
+      filter: brightness(0.8); /* Darken the color when clicked */
+    }
+
+    /* Styles for focused state of input fields */
+    input:focus {
+      border-width: 4px; /* Increase the border width when focused */
+      outline: none; /* Remove default outline */
+    }
+  </style>
   <head>
     <title>Hobby Predictor</title>
   </head>
@@ -15,7 +52,7 @@
         display: inline-block;
         margin-right: 10px;
       "
-      src="C:\Users\shame\Downloads\WhatsApp Image 2023-12-04 at 10.40.26_fd23705b.jpg"
+      src="../static/images/homelogo.png"
     />
     <div
       style="
@@ -63,52 +100,190 @@
   <div style="width: 100vw; height: calc(100vh - 144px); overflow: hidden">
     <img
       style="width: 100%; height: 100%; object-fit: cover"
-      src="C:\Users\shame\Downloads\WhatsApp Image 2023-12-04 at 10.40.27_e3872a4e.jpg"
+      src="../static/images/hero2.png"
     />
   </div>
+  <br /><br />
   <body>
-    <h1>Predict Your Hobby Now</h1>
     <form action="/predict" method="POST">
-      <label for="school">School:</label>
-      <input type="number" name="school" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="school">Love's going to school?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <button type="button" onclick="setSchool(1)" style="font-family: 'Quicksand', sans-serif; background-color: #25E52D; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin-right: 160px;">
+          Yes
+        </button>
+        <button type="button" onclick="setSchool(0)" style="font-family: 'Quicksand', sans-serif; background-color: #FF0000; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px;">
+          No
+        </button>
+        <input type="hidden" name="school" id="school" required>
+      </div>
+      <br /><br />
 
-      <label for="olympiad_participation">Olympiad Participation:</label>
-      <input type="number" name="olympiad_participation" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="olympiad_participation">Has your child participated in any Science/Maths Olympiad?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <button type="button" onclick="setOlympiadParticipation(1)" style="font-family: 'Quicksand', sans-serif; background-color: #25E52D; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin-right: 160px;">
+          Yes
+        </button>
+        
+        <button type="button" onclick="setOlympiadParticipation(0)" style="font-family: 'Quicksand', sans-serif; background-color: #FF0000; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px;">
+          No
+        </button>
+        <input type="hidden" name="olympiad_participation" id="olympiad_participation" required>
+      </div>
+      <br /><br />
 
-      <label for="fav_sub">Favorite Subject:</label>
-      <input type="number" name="fav_sub" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="fav_sub">What is his/her favorite subject?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+      <input type="text" required style="font-family: 'Quicksand', sans-serif; font-size: 16px; padding: 10px; border: 2px solid #000000; border-radius: 10px; outline: none;" name="fav_sub" required /><br />
+      </div>
+      <div style="margin:auto; text-align: center">
+      <p style="font-family: 'Quicksand'">(please enter a valid subject)</p>
+      </div>
 
-      <label for="projects">Projects:</label>
-      <input type="number" name="projects" required /><br />
+      <br /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="projects">Has done any projects under academics before?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <button type="button" onclick="setProjects(1)" style="font-family: 'Quicksand', sans-serif; background-color: #25E52D; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin-right: 160px;">
+          Yes
+        </button>
+        <button type="button" onclick="setProjects(0)" style="font-family: 'Quicksand', sans-serif; background-color: #FF0000; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px;">
+          No
+        </button>
+        <input type="hidden" name="projects" id="projects" required>
+      </div>
+      <br /><br />
 
-      <label for="grasp_pow">Grasping Power:</label>
-      <input type="number" name="grasp_pow" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="grasp_pow">His/Her Grasping power (1-6)</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <input type="number" name="grasp_pow" required style="font-family: 'Quicksand', sans-serif; font-size: 16px; padding: 10px; border: 2px solid #000000; border-radius: 10px; outline: none;" /><br />
+      </div>
+      <br /><br />
 
-      <label for="time_sprt">Time Spent on Sports:</label>
-      <input type="number" name="time_sprt" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="time_sprt">How much time does he/she spend playing outdoor/indoor games? (in hours)</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <input type="number" name="time_sprt" required style="font-family: 'Quicksand', sans-serif; font-size: 16px; padding: 10px; border: 2px solid #000000; border-radius: 10px; outline: none;" /><br />
+      </div>
+      <br /><br />
 
-      <label for="medals">Number of Medals:</label>
-      <input type="number" name="medals" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="medals">Medals won in Sports?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <input type="number" name="medals" required style="font-family: 'Quicksand', sans-serif; font-size: 16px; padding: 10px; border: 2px solid #000000; border-radius: 10px; outline: none;" /><br />
+      </div>
+      <br /><br />
 
-      <label for="career_sprt">Career in Sports:</label>
-      <input type number="number" name="career_sprt" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="career_sprt">Want's to pursue his/her career in sports?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <button type="button" onclick="setCareer_sprt(1)" style="font-family: 'Quicksand', sans-serif; background-color: #25E52D; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin-right: 160px;">
+          Yes
+        </button>
+        <button type="button" onclick="setCareer_sprt(0)" style="font-family: 'Quicksand', sans-serif; background-color: #FF0000; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px;">
+          No
+        </button>
+        <input type="hidden" name="career_sprt" id="career_sprt" required>
+      </div>
+      <br /><br />
 
-      <label for="act_sprt">Active in Sports:</label>
-      <input type="number" name="act_sprt" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="act_sprt">Regular in his/her sports activities?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <button type="button" onclick="setAct_sprt(1)" style="font-family: 'Quicksand', sans-serif; background-color: #25E52D; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin-right: 160px;">
+          Yes
+        </button>
+        <button type="button" onclick="setAct_sprt(0)" style="font-family: 'Quicksand', sans-serif; background-color: #FF0000; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px;">
+          No
+        </button>
+        <input type="hidden" name="act_sprt" id="act_sprt" required>
+      </div>
+      <br /><br />
 
-      <label for="fant_arts">Interest in Fantasy Arts:</label>
-      <input type="number" name="fant_arts" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="fant_arts">Love creating fantasy paintings?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <button type="button" onclick="setFant_arts(1)" style="font-family: 'Quicksand', sans-serif; background-color: #25E52D; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin-right: 160px;">
+          Yes
+        </button>
+        <button type="button" onclick="setFant_arts(0)" style="font-family: 'Quicksand', sans-serif; background-color: #FF0000; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px;">
+          No
+        </button>
+        <input type="hidden" name="fant_arts" id="fant_arts" required>
+      </div>
+      <br /><br />
 
-      <label for="won_arts">Number of Art Competitions Won:</label>
-      <input type="number" name="won_arts" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="won_arts">Won art competitions?</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <button type="button" onclick="setWon_arts(1)" style="font-family: 'Quicksand', sans-serif; background-color: #25E52D; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px; margin-right: 160px;">
+          Yes
+        </button>
+        <button type="button" onclick="setWon_arts(0)" style="font-family: 'Quicksand', sans-serif; background-color: #FF0000; color: white; border: none; border-radius: 20px; height: 50px; width: 150px; text-align: center; text-decoration: none; display: inline-block; font-size: 20px;">
+          No
+        </button>
+        <input type="hidden" name="won_arts" id="won_arts" required>
+      </div>
+      <br /><br />
 
-      <label for="time_art">Time Spent on Arts:</label>
-      <input type="number" name="time_art" required /><br />
+      <div style="color: black; font-size: 30px; font-family: 'Quicksand', sans-serif; font-weight: 700; word-wrap: break-word; text-align: center; margin-bottom: 20px;">
+        <label for="time_art">Time utilized in Arts? (in hours)</label>
+      </div>
+      <div style="margin:auto; text-align: center">
+        <input type="number" name="time_art" required style="font-family: 'Quicksand', sans-serif; font-size: 16px; padding: 10px; border: 2px solid #000000; border-radius: 10px; outline: none;" /><br />
+      </div>
+      <br /><br />
 
-      <input type="submit" value="Predict" />
+      <div style="margin: auto; text-align: center;">
+        <input type="submit" value="SUBMIT" style="font-family: 'Quicksand', sans-serif; background-color: black; color: white; width: 250px; height: 48px; border: none; border-radius: 46px; font-size: 20px;" />
+      </div>
+      <br /><br />
+      <br /><br />
     </form>
+    <div style="margin:auto; text-align: center">
     {% if prediction %}
-    <h2>{{ prediction }}</h2>
+    <h2 style="font-family: 'Quicksand'">{{ prediction }}</h2>
     {% endif %}
+    </div>
+    <br /><br />
+    <br /><br />
+    <br /><br />
+    <script>
+      function setSchool(value) {
+        document.getElementById('school').value = value;
+      }
+      function setOlympiadParticipation(value) {
+        document.getElementById('olympiad_participation').value = value;
+      }
+      function setProjects(value) {
+        document.getElementById('projects').value = value;
+      }
+      function setCareer_sprt(value) {
+        document.getElementById('career_sprt').value = value;
+      }
+      function setAct_sprt(value) {
+        document.getElementById('act_sprt').value = value;
+      }
+      function setFant_arts(value) {
+        document.getElementById('fant_arts').value = value;
+      }
+      function setWon_arts(value) {
+        document.getElementById('won_arts').value = value;
+      }
+    </script>
   </body>
 </html>
